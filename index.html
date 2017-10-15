@@ -75,7 +75,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cj8so1nqf0002wrzroau0lyzb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cj8sojxhg0000xtzrcusxefuq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -84,7 +84,7 @@
         <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="快速排序简介"><a href="#快速排序简介" class="headerlink" title="快速排序简介"></a>快速排序简介</h2><p>快速排序是一种很有效的排序方法，它同样采用了分治的思想，分别由三部分组成，首先把数组S划分为两个数组，其中数组A中的数都小于S[q],而数组B中的数都大于S[q],通过递归调用快速排序，对子数组再次进行排序。</p>
 <h2 id="插入排序性能分析"><a href="#插入排序性能分析" class="headerlink" title="插入排序性能分析"></a>插入排序性能分析</h2><p>快速排序的最坏时间复杂度为o(n^2),这是在每次选择标准值的时候都选中了最大值或者最小值，但是一般情况下，他的期望时间复杂度和归并算法是一样的，并且在实际情况中验证它是排序应用中最好的选择。</p>
 <h2 id="插入排序算法的Java实现"><a href="#插入排序算法的Java实现" class="headerlink" title="插入排序算法的Java实现"></a>插入排序算法的Java实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package xyz.sherrystar.algo;</div><div class="line"></div><div class="line">public class QuickSort &#123;</div><div class="line">    public int partition(int[] A,int p,int r) &#123;</div><div class="line">        int x = A[r];//令数组的最后一个数为标准值</div><div class="line">        int i = p-1;</div><div class="line">        for (int j = p; j &lt; r; j++) &#123;</div><div class="line">            if(A[j] &lt; x) &#123;</div><div class="line">                i++;</div><div class="line">                int change = A[i];//实现A[i]and A[j]的交换</div><div class="line">                A[i] = A[j];</div><div class="line">                A[j] = change;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        int c = A[i+1];</div><div class="line">        A[i+1] = A[r];</div><div class="line">        A[r] =c;  //把把标准值更换到对应的位置</div><div class="line">        return i+1;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int[] getSorted(int[] A,int p,int r) &#123;</div><div class="line">        if(p&lt;r) &#123;</div><div class="line">            int q = partition(A,p,r);//实现了对子数组的原址重排</div><div class="line">            getSorted(A,p,q-1);</div><div class="line">            getSorted(A,q+1,r);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return A;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://cl.ly/1a1Y0s0G072m" alt="haha"></p>
+<p><img src="https://cl.ly/1a1Y0s0G072m" alt="haha"><br><img src="/img/time.jpg" alt="sadasd"></p>
 
       
     </div><!-- .entry-content -->
@@ -121,7 +121,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cj8so1nq80000wrzrazdwd3xw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cj8sojxhk0001xtzrw4fao1l7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -166,44 +166,6 @@
 
 
   
-    <article id="post-QuickSort" class="post-QuickSort post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/QuickSort/" data-id="cj8so1nqc0001wrzrwijh8akv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="快速排序简介"><a href="#快速排序简介" class="headerlink" title="快速排序简介"></a>快速排序简介</h2><p>快速排序是一种很有效的排序方法，它同样采用了分治的思想，分别由三部分组成，首先把数组S划分为两个数组，其中数组A中的数都小于S[q],而数组B中的数都大于S[q],通过递归调用快速排序，对子数组再次进行排序。</p>
-<h2 id="插入排序性能分析"><a href="#插入排序性能分析" class="headerlink" title="插入排序性能分析"></a>插入排序性能分析</h2><p>快速排序的最坏时间复杂度为o(n^2),这是在每次选择标准值的时候都选中了最大值或者最小值，但是一般情况下，他的期望时间复杂度和归并算法是一样的，并且在实际情况中验证它是排序应用中最好的选择。</p>
-<h2 id="插入排序算法的Java实现"><a href="#插入排序算法的Java实现" class="headerlink" title="插入排序算法的Java实现"></a>插入排序算法的Java实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package xyz.sherrystar.algo;</div><div class="line"></div><div class="line">public class QuickSort &#123;</div><div class="line">    public int partition(int[] A,int p,int r) &#123;</div><div class="line">        int x = A[r];//令数组的最后一个数为标准值</div><div class="line">        int i = p-1;</div><div class="line">        for (int j = p; j &lt; r; j++) &#123;</div><div class="line">            if(A[j] &lt; x) &#123;</div><div class="line">                i++;</div><div class="line">                int change = A[i];//实现A[i]and A[j]的交换</div><div class="line">                A[i] = A[j];</div><div class="line">                A[j] = change;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        int c = A[i+1];</div><div class="line">        A[i+1] = A[r];</div><div class="line">        A[r] =c;  //把把标准值更换到对应的位置</div><div class="line">        return i+1;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int[] getSorted(int[] A,int p,int r) &#123;</div><div class="line">        if(p&lt;r) &#123;</div><div class="line">            int q = partition(A,p,r);//实现了对子数组的原址重排</div><div class="line">            getSorted(A,p,q-1);</div><div class="line">            getSorted(A,q+1,r);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return A;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://cl.ly/1a1Y0s0G072m" alt="haha"></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/10/12/QuickSort/">
-    <time datetime="2017-10-12T06:22:14.000Z" class="entry-date">
-        2017-10-12
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
     <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
     <!---->
 
@@ -219,7 +181,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cj8so1nqg0003wrzruh13im4r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cj8sojxhm0002xtzr0wfdlw63" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -283,10 +245,6 @@
         
           <li>
             <a href="/2017/10/12/InsertSort/">InsertSort</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/12/QuickSort/">(no title)</a>
           </li>
         
           <li>
