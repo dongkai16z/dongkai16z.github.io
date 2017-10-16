@@ -60,6 +60,50 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-BFSTraverseForArray" class="post-BFSTraverseForArray post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/10/16/BFSTraverseForArray/">BFSTraverseForArray</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cj8u5fg0f0000o7zrh7iwgwx1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h1><p>这里主要是针对用邻接矩阵表示的图的BFS算法，搜索技巧是整个图算法领域的核心，而BFS算法是后面的最短路径算法，D算法等算法的基础。</p>
+<h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>利用队列的性质，首先将跟节点放入队列，每次取出一个，并把取出来的鸡节点的Flag设为True，也就是说每个节点只能被遍历一次，同时把该节点的相邻的节点放入队列中，那么拿出队列的顺序就是遍历的顺序，从而实现了广度优先搜索。</p>
+<h2 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 这个是在存在邻接矩阵的情况下进行广度优先搜索以及深度优先搜索的代码</div><div class="line"> */</div><div class="line"></div><div class="line">package xyz.sherrystar.algo;</div><div class="line"></div><div class="line">import java.util.LinkedList;</div><div class="line">import java.util.Queue;</div><div class="line"></div><div class="line">public class TraverseForArray &#123;</div><div class="line">    private  int number = 9;</div><div class="line">    private boolean[] flag;</div><div class="line">    private String[] vert = &#123;&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;,&quot;H&quot;,&quot;I&quot;&#125;;</div><div class="line">    private int[][] edges=&#123;</div><div class="line">            &#123;0,1,0,0,0,1,1,0,0&#125;,&#123;1,0,1,0,0,0,1,0,1&#125;,&#123;0,1,0,1,0,0,0,0,1&#125;,</div><div class="line">            &#123;0,0,1,0,1,0,1,1,1&#125;,&#123;0,0,0,1,0,1,0,1,0&#125;,&#123;1,0,0,0,1,0,1,0,0&#125;,</div><div class="line">            &#123;0,1,0,1,0,1,0,1,0&#125;,&#123;0,0,0,1,1,0,1,0,0&#125;,&#123;0,1,1,1,0,0,0,0,0&#125;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line"></div><div class="line"></div><div class="line">    //图的广度搜索</div><div class="line">    public void BFSTraverse()&#123;</div><div class="line">       flag = new boolean[number];</div><div class="line">        Queue&lt;Integer&gt; queue = new LinkedList&lt;Integer&gt;();</div><div class="line">        for (int i = 0; i &lt; number ; i++) &#123;</div><div class="line">            if(flag[i] == false) &#123;</div><div class="line">                flag[i] = true;</div><div class="line">                System.out.println(vert[i]+&quot; &quot;);</div><div class="line">                queue.add(i);</div><div class="line">                while(!queue.isEmpty()) &#123;</div><div class="line">                    int j = queue.poll();</div><div class="line">                    for (int k = 0; k &lt; number; k++) &#123;</div><div class="line">                        if(edges[j][k] == 1 &amp;&amp; flag[k] == false) &#123;</div><div class="line">                            flag[k] = true;</div><div class="line">                            System.out.println(vert[k]+&quot; &quot;);</div><div class="line">                            queue.add(k);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/10/16/BFSTraverseForArray/">
+    <time datetime="2017-10-16T12:04:33.000Z" class="entry-date">
+        2017-10-16
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-QuickSort1" class="post-QuickSort1 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -75,7 +119,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cj8sojxhg0000xtzrcusxefuq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cj8u5fg0i0001o7zrkuyra2hi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -121,7 +165,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cj8sojxhk0001xtzrw4fao1l7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cj8u5fg0k0002o7zru8uiho2m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -181,7 +225,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cj8sojxhm0002xtzr0wfdlw63" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cj8u5fg0m0003o7zrtguhyoi8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -238,6 +282,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2017/10/16/BFSTraverseForArray/">BFSTraverseForArray</a>
+          </li>
         
           <li>
             <a href="/2017/10/15/QuickSort1/">QuickSort1</a>
