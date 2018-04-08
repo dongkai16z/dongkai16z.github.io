@@ -60,6 +60,51 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-travel" class="post-travel post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/04/08/travel/">travel</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/04/08/travel/" data-id="cjfqi9g9o0003yyzr1rqsw4j7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="快速排序简介"><a href="#快速排序简介" class="headerlink" title="快速排序简介"></a>快速排序简介</h2><p>快速排序是一种很有效的排序方法，它同样采用了分治的思想，分别由三部分组成，首先把数组S划分为两个数组，其中数组A中的数都小于S[q],而数组B中的数都大于S[q],通过递归调用快速排序，对子数组再次进行排序。</p>
+<h2 id="插入排序性能分析"><a href="#插入排序性能分析" class="headerlink" title="插入排序性能分析"></a>插入排序性能分析</h2><p>快速排序的最坏时间复杂度为o(n^2),这是在每次选择标准值的时候都选中了最大值或者最小值，但是一般情况下，他的期望时间复杂度和归并算法是一样的，并且在实际情况中验证它是排序应用中最好的选择。</p>
+<h2 id="插入排序算法的Java实现"><a href="#插入排序算法的Java实现" class="headerlink" title="插入排序算法的Java实现"></a>插入排序算法的Java实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package xyz.sherrystar.algo;</div><div class="line"></div><div class="line">public class QuickSort &#123;</div><div class="line">    public int partition(int[] A,int p,int r) &#123;</div><div class="line">        int x = A[r];//令数组的最后一个数为标准值</div><div class="line">        int i = p-1;</div><div class="line">        for (int j = p; j &lt; r; j++) &#123;</div><div class="line">            if(A[j] &lt; x) &#123;</div><div class="line">                i++;</div><div class="line">                int change = A[i];//实现A[i]and A[j]的交换</div><div class="line">                A[i] = A[j];</div><div class="line">                A[j] = change;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        int c = A[i+1];</div><div class="line">        A[i+1] = A[r];</div><div class="line">        A[r] =c;  //把把标准值更换到对应的位置</div><div class="line">        return i+1;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int[] getSorted(int[] A,int p,int r) &#123;</div><div class="line">        if(p&lt;r) &#123;</div><div class="line">            int q = partition(A,p,r);//实现了对子数组的原址重排</div><div class="line">            getSorted(A,p,q-1);</div><div class="line">            getSorted(A,q+1,r);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        return A;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/04/08/travel/">
+    <time datetime="2018-04-08T07:45:02.000Z" class="entry-date">
+        2018-04-08
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Journals-and-Conference" class="post-Journals-and-Conference post type-post status-publish format-standard hentry">
     <!---->
 
@@ -75,7 +120,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/01/Journals-and-Conference/" data-id="cj9i4sbi40002gzzrzxglxdkm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/01/Journals-and-Conference/" data-id="cjfqi9g9p0004yyzrqbkcgiq4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -136,7 +181,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/18/量子隐形传态/" data-id="cj9i4sbi60004gzzriuyqthnr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/18/量子隐形传态/" data-id="cjfqi9g9w0007yyzre2g94auw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -194,7 +239,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/char和byte的区别/" data-id="cj9i4sbi70005gzzrwzp3wsuk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/char和byte的区别/" data-id="cjfqi9g9v0006yyzrwzf0o9w5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -237,7 +282,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cj9i4sbi20001gzzrkdxwtv9a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cjfqi9g9h0000yyzrmz31xjwp" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -281,7 +326,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cj9i4sbi50003gzzrfax6dot9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cjfqi9g9l0001yyzr3c3cdfcx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -327,7 +372,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cj9i4sbhy0000gzzrf81difrt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cjfqi9g9n0002yyzrouyducc6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -387,7 +432,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cj9i4sbi90006gzzrk3e9rpxx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cjfqi9g9t0005yyzr0xu8xa98" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -446,6 +491,10 @@
       <ul>
         
           <li>
+            <a href="/2018/04/08/travel/">travel</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/01/Journals-and-Conference/">Journals and Conference</a>
           </li>
         
@@ -461,10 +510,6 @@
             <a href="/2017/10/16/BFSTraverseForArray/">BFSTraverseForArray</a>
           </li>
         
-          <li>
-            <a href="/2017/10/15/QuickSort1/">QuickSort1</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -477,7 +522,7 @@
 </div>
       </div>
       <footer id="colophon" role="contentinfo">
-    <p>&copy; 2017 John Doe
+    <p>&copy; 2018 John Doe
     All rights reserved.</p>
     <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
