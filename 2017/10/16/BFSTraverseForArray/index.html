@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   
   <meta name="description" content="广度优先搜索这里主要是针对用邻接矩阵表示的图的BFS算法，搜索技巧是整个图算法领域的核心，而BFS算法是后面的最短路径算法，D算法等算法的基础。
-核心思想利用队列的性质，首先将跟节点放入队列，每次取出一个，并把取出来的鸡节点的Flag设为True，也就是说每个节点只能被遍历一次，同时把该节点的相邻的" />
+核心思想利用队列的性质，首先将跟节点放入队列，每次取出一个，并把取出来的鸡节点的Flag设为True，也就是说每个节点只能被遍历一次，同时把该节点的相邻的">
   
 
   
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/16/BFSTraverseForArray/index.html">
 <meta property="og:site_name" content="SherryStar&#39;s Home">
 <meta property="og:description" content="广度优先搜索这里主要是针对用邻接矩阵表示的图的BFS算法，搜索技巧是整个图算法领域的核心，而BFS算法是后面的最短路径算法，D算法等算法的基础。 核心思想利用队列的性质，首先将跟节点放入队列，每次取出一个，并把取出来的鸡节点的Flag设为True，也就是说每个节点只能被遍历一次，同时把该节点的相邻的节点放入队列中，那么拿出队列的顺序就是遍历的顺序，从而实现了广度优先搜索。 相关代码12345678">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-10-16T12:21:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BFSTraverseForArray">
@@ -35,8 +36,8 @@
 
   
   <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-</head>
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
 <body class="home blog custom-background custom-font-enabled single-author">
   <div id="page" class="hfeed site">
       <header id="masthead" class="site-header" role="banner">
@@ -80,7 +81,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cju8este70000lbzr46r9uy4m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cjudyikkj0000skzrridmkew3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -88,7 +89,7 @@
       
         <h1 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h1><p>这里主要是针对用邻接矩阵表示的图的BFS算法，搜索技巧是整个图算法领域的核心，而BFS算法是后面的最短路径算法，D算法等算法的基础。</p>
 <h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>利用队列的性质，首先将跟节点放入队列，每次取出一个，并把取出来的鸡节点的Flag设为True，也就是说每个节点只能被遍历一次，同时把该节点的相邻的节点放入队列中，那么拿出队列的顺序就是遍历的顺序，从而实现了广度优先搜索。</p>
-<h2 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 这个是在存在邻接矩阵的情况下进行广度优先搜索以及深度优先搜索的代码</div><div class="line"> */</div><div class="line"></div><div class="line">package xyz.sherrystar.algo;</div><div class="line"></div><div class="line">import java.util.LinkedList;</div><div class="line">import java.util.Queue;</div><div class="line"></div><div class="line">public class TraverseForArray &#123;</div><div class="line">    private  int number = 9;</div><div class="line">    private boolean[] flag;</div><div class="line">    private String[] vert = &#123;&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;,&quot;H&quot;,&quot;I&quot;&#125;;</div><div class="line">    private int[][] edges=&#123;</div><div class="line">            &#123;0,1,0,0,0,1,1,0,0&#125;,&#123;1,0,1,0,0,0,1,0,1&#125;,&#123;0,1,0,1,0,0,0,0,1&#125;,</div><div class="line">            &#123;0,0,1,0,1,0,1,1,1&#125;,&#123;0,0,0,1,0,1,0,1,0&#125;,&#123;1,0,0,0,1,0,1,0,0&#125;,</div><div class="line">            &#123;0,1,0,1,0,1,0,1,0&#125;,&#123;0,0,0,1,1,0,1,0,0&#125;,&#123;0,1,1,1,0,0,0,0,0&#125;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line"></div><div class="line"></div><div class="line">    //图的广度搜索</div><div class="line">    public void BFSTraverse()&#123;</div><div class="line">       flag = new boolean[number];</div><div class="line">        Queue&lt;Integer&gt; queue = new LinkedList&lt;Integer&gt;();</div><div class="line">        for (int i = 0; i &lt; number ; i++) &#123;</div><div class="line">            if(flag[i] == false) &#123;</div><div class="line">                flag[i] = true;</div><div class="line">                System.out.println(vert[i]+&quot; &quot;);</div><div class="line">                queue.add(i);</div><div class="line">                while(!queue.isEmpty()) &#123;</div><div class="line">                    int j = queue.poll();</div><div class="line">                    for (int k = 0; k &lt; number; k++) &#123;</div><div class="line">                        if(edges[j][k] == 1 &amp;&amp; flag[k] == false) &#123;</div><div class="line">                            flag[k] = true;</div><div class="line">                            System.out.println(vert[k]+&quot; &quot;);</div><div class="line">                            queue.add(k);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 这个是在存在邻接矩阵的情况下进行广度优先搜索以及深度优先搜索的代码</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">package xyz.sherrystar.algo;</span><br><span class="line"></span><br><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.Queue;</span><br><span class="line"></span><br><span class="line">public class TraverseForArray &#123;</span><br><span class="line">    private  int number = 9;</span><br><span class="line">    private boolean[] flag;</span><br><span class="line">    private String[] vert = &#123;&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;,&quot;H&quot;,&quot;I&quot;&#125;;</span><br><span class="line">    private int[][] edges=&#123;</span><br><span class="line">            &#123;0,1,0,0,0,1,1,0,0&#125;,&#123;1,0,1,0,0,0,1,0,1&#125;,&#123;0,1,0,1,0,0,0,0,1&#125;,</span><br><span class="line">            &#123;0,0,1,0,1,0,1,1,1&#125;,&#123;0,0,0,1,0,1,0,1,0&#125;,&#123;1,0,0,0,1,0,1,0,0&#125;,</span><br><span class="line">            &#123;0,1,0,1,0,1,0,1,0&#125;,&#123;0,0,0,1,1,0,1,0,0&#125;,&#123;0,1,1,1,0,0,0,0,0&#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //图的广度搜索</span><br><span class="line">    public void BFSTraverse()&#123;</span><br><span class="line">       flag = new boolean[number];</span><br><span class="line">        Queue&lt;Integer&gt; queue = new LinkedList&lt;Integer&gt;();</span><br><span class="line">        for (int i = 0; i &lt; number ; i++) &#123;</span><br><span class="line">            if(flag[i] == false) &#123;</span><br><span class="line">                flag[i] = true;</span><br><span class="line">                System.out.println(vert[i]+&quot; &quot;);</span><br><span class="line">                queue.add(i);</span><br><span class="line">                while(!queue.isEmpty()) &#123;</span><br><span class="line">                    int j = queue.poll();</span><br><span class="line">                    for (int k = 0; k &lt; number; k++) &#123;</span><br><span class="line">                        if(edges[j][k] == 1 &amp;&amp; flag[k] == false) &#123;</span><br><span class="line">                            flag[k] = true;</span><br><span class="line">                            System.out.println(vert[k]+&quot; &quot;);</span><br><span class="line">                            queue.add(k);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div><!-- .entry-content -->
 
@@ -126,8 +127,8 @@
   
     <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
     <div>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="搜索" />
+        <input type="text" value name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
     </div>
 </form></aside>
   
@@ -140,6 +141,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2019/04/12/非递归遍历二叉树/">非递归遍历二叉树</a>
+          </li>
         
           <li>
             <a href="/2019/04/08/triangle/">triangle</a>
@@ -155,10 +160,6 @@
         
           <li>
             <a href="/2017/10/18/量子隐形传态/">量子隐形传态</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/16/char和byte的区别/">char和byte的区别</a>
           </li>
         
       </ul>

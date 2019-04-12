@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   
   <meta name="description" content="css绘制三角形首先要了解一下css的盒模型,弄清楚margin,border,padding的关系。
-盒模型的绘制123456789#sen&amp;#123;            height: 20px;            width: 20px;            background-c" />
+盒模型的绘制123456789#sen&amp;#123;            height: 20px;            width: 20px;            background-c">
   
 
   
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2019/04/08/triangle/index.html">
 <meta property="og:site_name" content="SherryStar&#39;s Home">
 <meta property="og:description" content="css绘制三角形首先要了解一下css的盒模型,弄清楚margin,border,padding的关系。 盒模型的绘制123456789#sen&amp;#123;            height: 20px;            width: 20px;            background-color: black;            border-top: 100px solid cy">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/triangle/image/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/triangle/image/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/08/triangle/image/3.jpg">
@@ -41,8 +42,8 @@
 
   
   <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-</head>
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
 <body class="home blog custom-background custom-font-enabled single-author">
   <div id="page" class="hfeed site">
       <header id="masthead" class="site-header" role="banner">
@@ -86,19 +87,19 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/08/triangle/" data-id="cju8estek0005lbzrtea6g03z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/08/triangle/" data-id="cjudyikl10005skzrrzx3wmpo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h4 id="css绘制三角形"><a href="#css绘制三角形" class="headerlink" title="css绘制三角形"></a>css绘制三角形</h4><p>首先要了解一下css的<a href="http://www.runoob.com/css/css-boxmodel.html" target="_blank" rel="external">盒模型</a>,弄清楚margin,border,padding的关系。</p>
-<h5 id="盒模型的绘制"><a href="#盒模型的绘制" class="headerlink" title="盒模型的绘制"></a>盒模型的绘制</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#sen&#123;</div><div class="line">            height: 20px;</div><div class="line">            width: 20px;</div><div class="line">            background-color: black;</div><div class="line">            border-top: 100px solid cyan;</div><div class="line">            border-left: 100px solid green;</div><div class="line">            border-right: 100px solid yellow;</div><div class="line">            border-bottom: 100px solid #ff0066;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
-<p>结果如下:<br><br><img src="image/1.jpg" alt="盒模型演示1"><br><br>可以清楚的看出，这样做出来周边有颜色的图块是梯形，如果我们想要实现出现三角形的形状，是不是可以尝试一下把中间content的高和宽都设置为0呢？那就尝试一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#sen&#123;</div><div class="line">            height: 0;</div><div class="line">            width: 0;</div><div class="line">            background-color: black;</div><div class="line">            border-top: 100px solid cyan;</div><div class="line">            border-left: 100px solid green;</div><div class="line">            border-right: 100px solid yellow;</div><div class="line">            border-bottom: 100px solid #ff0066;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p>结果如下：<br><br><img src="image/2.jpg" alt="盒模型演示2"><br><br>我们看到，三角形的形状已经出来了，那么我么如何只要一个三角形呢，这个很简单，把其他的三角形的颜色设置为透明就可以啦<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#sen&#123;</div><div class="line">            height: 0;</div><div class="line">            width: 0;</div><div class="line">            background-color: black;</div><div class="line">            border-top: 100px solid transparent;</div><div class="line">            border-left: 100px solid transparent;</div><div class="line">            border-right: 100px solid transparent;</div><div class="line">            border-bottom: 100px solid #ff0066;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p><img src="image/3.jpg" alt=""><br>我们看到,我们已经实现了三角形，但是在开发者模式中，我们也看到，虽然我们设置为透明了，但是其占据的空间确实是真实存在的，那么我们减小一些border的宽度看看效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#sen&#123;</div><div class="line">            height: 0;</div><div class="line">            width: 0;</div><div class="line">            background-color: black;</div><div class="line">            border-left: 100px solid transparent;</div><div class="line">            border-right: 100px solid transparent;</div><div class="line">            border-bottom: 100px solid #ff0066;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p><img src="image/4.jpg" alt=""><br>可以看到，这样占据的空间就少了一半，同时，我们也可以用这种方式改变三角形的形状，绘制各种各样的三角形，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#sen&#123;</div><div class="line">            height: 0;</div><div class="line">            width: 0;</div><div class="line">            background-color: black;</div><div class="line">            border-left: 60px solid transparent;</div><div class="line">            border-right: 40px solid transparent;</div><div class="line">            border-bottom: 100px solid #ff0066;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p><img src="image/5.jpg" alt=""></p>
+        <h4 id="css绘制三角形"><a href="#css绘制三角形" class="headerlink" title="css绘制三角形"></a>css绘制三角形</h4><p>首先要了解一下css的<a href="http://www.runoob.com/css/css-boxmodel.html" target="_blank" rel="noopener">盒模型</a>,弄清楚margin,border,padding的关系。</p>
+<h5 id="盒模型的绘制"><a href="#盒模型的绘制" class="headerlink" title="盒模型的绘制"></a>盒模型的绘制</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#sen&#123;</span><br><span class="line">            height: 20px;</span><br><span class="line">            width: 20px;</span><br><span class="line">            background-color: black;</span><br><span class="line">            border-top: 100px solid cyan;</span><br><span class="line">            border-left: 100px solid green;</span><br><span class="line">            border-right: 100px solid yellow;</span><br><span class="line">            border-bottom: 100px solid #ff0066;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下:<br><br><img src="image/1.jpg" alt="盒模型演示1"><br><br>可以清楚的看出，这样做出来周边有颜色的图块是梯形，如果我们想要实现出现三角形的形状，是不是可以尝试一下把中间content的高和宽都设置为0呢？那就尝试一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#sen&#123;</span><br><span class="line">            height: 0;</span><br><span class="line">            width: 0;</span><br><span class="line">            background-color: black;</span><br><span class="line">            border-top: 100px solid cyan;</span><br><span class="line">            border-left: 100px solid green;</span><br><span class="line">            border-right: 100px solid yellow;</span><br><span class="line">            border-bottom: 100px solid #ff0066;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果如下：<br><br><img src="image/2.jpg" alt="盒模型演示2"><br><br>我们看到，三角形的形状已经出来了，那么我么如何只要一个三角形呢，这个很简单，把其他的三角形的颜色设置为透明就可以啦<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#sen&#123;</span><br><span class="line">            height: 0;</span><br><span class="line">            width: 0;</span><br><span class="line">            background-color: black;</span><br><span class="line">            border-top: 100px solid transparent;</span><br><span class="line">            border-left: 100px solid transparent;</span><br><span class="line">            border-right: 100px solid transparent;</span><br><span class="line">            border-bottom: 100px solid #ff0066;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="image/3.jpg" alt><br>我们看到,我们已经实现了三角形，但是在开发者模式中，我们也看到，虽然我们设置为透明了，但是其占据的空间确实是真实存在的，那么我们减小一些border的宽度看看效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#sen&#123;</span><br><span class="line">            height: 0;</span><br><span class="line">            width: 0;</span><br><span class="line">            background-color: black;</span><br><span class="line">            border-left: 100px solid transparent;</span><br><span class="line">            border-right: 100px solid transparent;</span><br><span class="line">            border-bottom: 100px solid #ff0066;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="image/4.jpg" alt><br>可以看到，这样占据的空间就少了一半，同时，我们也可以用这种方式改变三角形的形状，绘制各种各样的三角形，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#sen&#123;</span><br><span class="line">            height: 0;</span><br><span class="line">            width: 0;</span><br><span class="line">            background-color: black;</span><br><span class="line">            border-left: 60px solid transparent;</span><br><span class="line">            border-right: 40px solid transparent;</span><br><span class="line">            border-bottom: 100px solid #ff0066;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="image/5.jpg" alt></p>
 
       
     </div><!-- .entry-content -->
@@ -119,6 +120,8 @@
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
+        <span class="nav-previous"><a href="/2019/04/12/非递归遍历二叉树/" rel="prev"><span class="meta-nav">←</span> 非递归遍历二叉树</a></span>
+    
     
         <span class="nav-next"><a href="/2018/04/08/travel/" rel="next">travel <span class="meta-nav">→</span></a></span>
     
@@ -135,8 +138,8 @@
   
     <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
     <div>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="搜索" />
+        <input type="text" value name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
     </div>
 </form></aside>
   
@@ -149,6 +152,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2019/04/12/非递归遍历二叉树/">非递归遍历二叉树</a>
+          </li>
         
           <li>
             <a href="/2019/04/08/triangle/">triangle</a>
@@ -164,10 +171,6 @@
         
           <li>
             <a href="/2017/10/18/量子隐形传态/">量子隐形传态</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/16/char和byte的区别/">char和byte的区别</a>
           </li>
         
       </ul>
