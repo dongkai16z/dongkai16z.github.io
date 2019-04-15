@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="基本原理
+html通过锚点定位原理可以进行无刷新跳转，触发后URL地址会出现“#…”的部分，同时在全局的windoe对象上触发hashchange事件，这样在页面锚点hash更改为某个预设值的时候，通过相应的回掉函数实现对应页面DOM的改变，就可以实现基本的路由了。
+
+代码实现12345678910">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>hash前端路由原理 | SherryStar&#39;s Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本原理 html通过锚点定位原理可以进行无刷新跳转，触发后URL地址会出现“#…”的部分，同时在全局的windoe对象上触发hashchange事件，这样在页面锚点hash更改为某个预设值的时候，通过相应的回掉函数实现对应页面DOM的改变，就可以实现基本的路由了。  代码实现12345678910111213141516171819202122232425262728293031323334fu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hash前端路由原理">
+<meta property="og:url" content="http://yoursite.com/2019/04/15/hash前端路由原理/index.html">
+<meta property="og:site_name" content="SherryStar&#39;s Home">
+<meta property="og:description" content="基本原理 html通过锚点定位原理可以进行无刷新跳转，触发后URL地址会出现“#…”的部分，同时在全局的windoe对象上触发hashchange事件，这样在页面锚点hash更改为某个预设值的时候，通过相应的回掉函数实现对应页面DOM的改变，就可以实现基本的路由了。  代码实现12345678910111213141516171819202122232425262728293031323334fu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-15T03:27:58.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hash前端路由原理">
+<meta name="twitter:description" content="基本原理 html通过锚点定位原理可以进行无刷新跳转，触发后URL地址会出现“#…”的部分，同时在全局的windoe对象上触发hashchange事件，这样在页面锚点hash更改为某个预设值的时候，通过相应的回掉函数实现对应页面DOM的改变，就可以实现基本的路由了。  代码实现12345678910111213141516171819202122232425262728293031323334fu">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="SherryStar&#39;s Home" rel="home">SherryStar&#39;s Home</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-hash前端路由原理" class="post-hash前端路由原理 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      hash前端路由原理
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/15/hash前端路由原理/" data-id="cjuhssuht0003mkzr3915e6e8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><blockquote>
+<p>html通过锚点定位原理可以进行无刷新跳转，触发后URL地址会出现“#…”的部分，同时在全局的windoe对象上触发hashchange事件，这样在页面锚点hash更改为某个预设值的时候，通过相应的回掉函数实现对应页面DOM的改变，就可以实现基本的路由了。</p>
+</blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Router</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.routes = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.currentUrl = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line">Router.prototype.route = <span class="function"><span class="keyword">function</span>(<span class="params">path, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.routes[path] = callback || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">Router.prototype.refresh = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.currentUrl = location.hash.slice(<span class="number">1</span>) || <span class="string">"/"</span>;</span><br><span class="line">  <span class="keyword">this</span>.routes[<span class="keyword">this</span>.currentUrl]();</span><br><span class="line">&#125;;</span><br><span class="line">Router.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">"load"</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">"hashchange"</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.Router = <span class="keyword">new</span> Router();</span><br><span class="line"><span class="built_in">window</span>.Router.init();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> content = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>);</span><br><span class="line"><span class="comment">// change Page anything</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeBgColor</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  content.style.backgroundColor = color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Router.route(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeBgColor(<span class="string">"white"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(<span class="string">"/orange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeBgColor(<span class="string">"orange"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(<span class="string">"/purple"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeBgColor(<span class="string">"purple"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/04/15/hash前端路由原理/">
+    <time datetime="2019-04-15T03:11:39.000Z" class="entry-date">
+        2019-04-15
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/04/12/非递归遍历二叉树/" rel="next">非递归遍历二叉树 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/15/hash前端路由原理/">hash前端路由原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/12/非递归遍历二叉树/">非递归遍历二叉树</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/triangle/">triangle</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/08/travel/">travel</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/01/Journals-and-Conference/">Journals and Conference</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

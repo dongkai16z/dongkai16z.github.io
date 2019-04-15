@@ -61,6 +61,51 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-hash前端路由原理" class="post-hash前端路由原理 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/04/15/hash前端路由原理/">hash前端路由原理</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/15/hash前端路由原理/" data-id="cjuhssuht0003mkzr3915e6e8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><blockquote>
+<p>html通过锚点定位原理可以进行无刷新跳转，触发后URL地址会出现“#…”的部分，同时在全局的windoe对象上触发hashchange事件，这样在页面锚点hash更改为某个预设值的时候，通过相应的回掉函数实现对应页面DOM的改变，就可以实现基本的路由了。</p>
+</blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Router</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.routes = &#123;&#125;;</span><br><span class="line">  <span class="keyword">this</span>.currentUrl = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line">Router.prototype.route = <span class="function"><span class="keyword">function</span>(<span class="params">path, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.routes[path] = callback || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">Router.prototype.refresh = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.currentUrl = location.hash.slice(<span class="number">1</span>) || <span class="string">"/"</span>;</span><br><span class="line">  <span class="keyword">this</span>.routes[<span class="keyword">this</span>.currentUrl]();</span><br><span class="line">&#125;;</span><br><span class="line">Router.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">"load"</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">"hashchange"</span>, <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>), <span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.Router = <span class="keyword">new</span> Router();</span><br><span class="line"><span class="built_in">window</span>.Router.init();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> content = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>);</span><br><span class="line"><span class="comment">// change Page anything</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeBgColor</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  content.style.backgroundColor = color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Router.route(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeBgColor(<span class="string">"white"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(<span class="string">"/orange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeBgColor(<span class="string">"orange"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(<span class="string">"/purple"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeBgColor(<span class="string">"purple"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/04/15/hash前端路由原理/">
+    <time datetime="2019-04-15T03:11:39.000Z" class="entry-date">
+        2019-04-15
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-非递归遍历二叉树" class="post-非递归遍历二叉树 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +121,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/12/非递归遍历二叉树/" data-id="cjudyikl50006skzrxvck0555" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/12/非递归遍历二叉树/" data-id="cjuhssuib0009mkzroyjdqk2f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -121,7 +166,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/08/triangle/" data-id="cjudyikl10005skzrrzx3wmpo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/08/triangle/" data-id="cjuhssui80008mkzr3mi8tidw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -170,7 +215,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/04/08/travel/" data-id="cjudyikl70007skzrqmpcsjdy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/04/08/travel/" data-id="cjuhssuhy0005mkzr2rpwu6lc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -215,7 +260,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/01/Journals-and-Conference/" data-id="cjudyikku0002skzroqq6u8i0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/01/Journals-and-Conference/" data-id="cjuhssuid000amkzrfq9mhq3v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -276,7 +321,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/18/量子隐形传态/" data-id="cjudyikl90008skzr9u79tj9v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/18/量子隐形传态/" data-id="cjuhssui50007mkzr4mlbqpjv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -334,7 +379,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/char和byte的区别/" data-id="cjudyikla0009skzr4p4nik6r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/char和byte的区别/" data-id="cjuhssuhv0004mkzrlt7krrko" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -377,7 +422,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cjudyikkj0000skzrridmkew3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/16/BFSTraverseForArray/" data-id="cjuhssuhg0000mkzrut713dyj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -421,7 +466,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cjudyikkz0004skzrnp76jihc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/15/QuickSort1/" data-id="cjuhssuhq0002mkzrekj0j4cq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -467,7 +512,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cjudyikkp0001skzrtecv208x" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/12/InsertSort/" data-id="cjuhssuhm0001mkzr12zswexg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -512,57 +557,12 @@
 
 
   
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/10/10/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/10/10/hello-world/" data-id="cjudyikkw0003skzrc3j78ilo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/10/10/hello-world/">
-    <time datetime="2017-10-10T03:58:19.000Z" class="entry-date">
-        2017-10-10
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      </nav>
+    </nav>
   
 
 </div></div>
@@ -586,6 +586,10 @@
       <ul>
         
           <li>
+            <a href="/2019/04/15/hash前端路由原理/">hash前端路由原理</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/12/非递归遍历二叉树/">非递归遍历二叉树</a>
           </li>
         
@@ -599,10 +603,6 @@
         
           <li>
             <a href="/2017/11/01/Journals-and-Conference/">Journals and Conference</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/18/量子隐形传态/">量子隐形传态</a>
           </li>
         
       </ul>
